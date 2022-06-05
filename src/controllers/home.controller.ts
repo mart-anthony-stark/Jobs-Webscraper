@@ -7,9 +7,9 @@ module.exports = {
     reply.send("Hello");
   },
 
-  findJob: async(req: any, reply: any) => {
-    const { job, place } = req.query;
-    const indeedJobs = await indeed(job, place);
+  findJob: async (req: any, reply: any) => {
+    const { job, place, page } = req.query;
+    const indeedJobs = await indeed(job, place, page);
     reply.send({ indeedJobs });
   },
 };
