@@ -1,0 +1,32 @@
+{
+  "name": "job-hunter-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc -p .",
+    "dev:dist": "nodemon build/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mart-anthony-stark/Node-boilerplates.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mart-anthony-stark/Node-boilerplates/issues"
+  },
+  "homepage": "https://github.com/mart-anthony-stark/Node-boilerplates#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "fastify": "^3.27.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}
