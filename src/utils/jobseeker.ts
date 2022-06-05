@@ -21,13 +21,15 @@ export const indeed = async (job: string, loc: string, page?: number) => {
     const companyName = $(parentEl).find(".companyName").text();
     const companyLoc = $(parentEl).find(".companyLocation").text();
     const salary = $(parentEl).find(".salary-snippet-container").text();
+    const job_desc = $(parentEl).find(".job-snippet").text();
     resultObj["job_title"] = title.text();
     resultObj["link"] = `${BASEURL}${title.attr("href")}`;
     resultObj["company_name"] = companyName;
     resultObj["company_location"] = companyLoc;
     resultObj["salary"] = salary;
+    resultObj["job_desc"] = job_desc;
 
     results.push(resultObj);
   });
-  return results;
+  return { start: page, items: results.length, origin: BASEURL, jobs: results };
 };
