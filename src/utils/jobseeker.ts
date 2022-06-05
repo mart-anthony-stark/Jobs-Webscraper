@@ -9,24 +9,20 @@ export const indeed = async (job: string, place: string) => {
   const html = response.data;
   const $ = cheerio.load(html);
 
-  const keys = ["job_title", "link"];
   const results: any = [];
 
   $(selector).each((parentIndex, parentEl) => {
-    let keyIndex = 0;
     const resultObj: any = {};
-    console.log(keyIndex, keys.length)
-    if (keyIndex < keys.length) {
-      $(parentEl)
-        .children()
-        .each((childIndex, childEl) => {
-          const title = $(childEl).find(".jobTitle a");
-          resultObj[keys[keyIndex++]] = title.text();
-          resultObj[keys[keyIndex++]] = `${BASEURL}${title.attr("href")}`;
-        });
 
-      results.push(resultObj);
-    }
+    const title = $(parentEl).find(".jobTitle a");
+    const companyName = $(parentEl).find(".companyName");
+    const companyLoc = $(parentEl).find(".companyLocation");
+    resultObj["job_title"] = title.text();
+    resultObj["link"] = `${BASEURL}${title.attr("href")}`;
+    resultObj["company_name"] = companyName.text();
+    resultObj["company_location"] = companyLoc.text();
+
+    results.push(resultObj);
   });
   return results;
 };
