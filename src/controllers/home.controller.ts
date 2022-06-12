@@ -1,6 +1,6 @@
 import axios from "axios";
 import cheerio from "cheerio";
-import { indeed } from "../utils/jobseeker";
+import { indeed, jobstreet } from "../utils/jobseeker";
 
 module.exports = {
   getAll: (req: any, reply: any) => {
@@ -9,7 +9,8 @@ module.exports = {
 
   findJob: async (req: any, reply: any) => {
     const { job, place, page } = req.query;
-    const indeedJobs = await indeed(job, place, page);
-    reply.send({ indeedJobs });
+    const jobs = await indeed(job, place, page);
+    // const jobs = await jobstreet(job, place, page);
+    reply.send({ jobs });
   },
 };
