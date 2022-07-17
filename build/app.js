@@ -31,7 +31,7 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config({});
 const index_1 = __importDefault(require("./routes/index"));
 const server = (0, fastify_1.default)();
-const PORT = parseInt(`${process.env.PORT}`, 10) || 8080;
+const PORT = process.env.PORT || 8080;
 server.register(index_1.default);
 server.listen(PORT, () => {
     console.log(`Server started running on port ${PORT}`);
